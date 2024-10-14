@@ -1,30 +1,28 @@
-//Перевірка теорії ймовірності.
-//Напишіть функцію яка буде генерувати певну кількість випадкових чисел в діапазоні від 100 до 1000 включно.
-//Порахувати кількість парних та непарних серед них.
-//Обчислити відсоткове співвідношення - чи буде воно близьке до 50%50?
-//Приклад функції checkProbabilityTheory(count).
-//Парметр count буде вказувати скільки разів буде генеруватися випадкове число.
+function checkProbabilityTheory(count) {
+    let pairedNumbers = 0;
+    let notPairedNumbers = 0;
 
-//random numbers between 100 and 1000
-//percentage 50/50
-//{{functionname}}(count){}
-//so first we should generate a number, number equals count inputted parameter
-//we should take into account our range
-//then we should pay attention to the /2 and !/2 numbers
-//then we should check isn't it 50/50?
+    for (let i = 0; i < count; i++) {
+        // Simulate a random number between 100 and 1000
+        let randomNumber = 100 + (i * 7) % 901;
 
-function checkProbabilityTheory(count){
-    let pairedNumbers = 0
-    let notPairedNumbers = 0
+        if (randomNumber % 2 === 0) {
+            pairedNumbers++;
+        } else {
+            notPairedNumbers++;
+        }
+    }
 
-    
+    let totalNumbers = pairedNumbers + notPairedNumbers;
 
-    let totalNumbers = pairedNumbers * notPairedNumbers
+    let percentageOfEven = (pairedNumbers / totalNumbers) * 100;
+    let percentageOfOdd = (notPairedNumbers / totalNumbers) * 100;
 
-    console.logt(`Amount of the generated numbers: ${totalNumbers}`)
-    console.log(`Amount of the paired numbers: ${pairedNumbers}`)
-    console.log(`Amount of the not paired numbers: ${notPairedNumbers}`)
-    console.log(`Ratio of paired to unpaired numbers: ${percentageOfNumbers}`)
+    console.log(`Amount of the generated numbers: ${totalNumbers}`);
+    console.log(`Amount of the paired numbers: ${pairedNumbers}`);
+    console.log(`Amount of the not paired numbers: ${notPairedNumbers}`);
+    console.log(`Percentage of paired numbers: ${percentageOfEven.toFixed(2)}%`);
+    console.log(`Percentage of not paired numbers: ${percentageOfOdd.toFixed(2)}%`);
 }
 
-checkProbabilityTheory(100)
+checkProbabilityTheory(100);
